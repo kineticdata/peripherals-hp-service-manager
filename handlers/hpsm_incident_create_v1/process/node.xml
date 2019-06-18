@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="hpsm_incident_create" name="HPSM Incident Create" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Creates an incident in the HP Service Manager</description>
+    <helpurl>http://ktc.kineticdata.com/handler/hpsm_incident_create/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="incident_id" label="Incident Id" required="false"
+            tooltip="The incident id (will be automatically assigned by HP SM if not inputted)."/>
+        <parameter id="status" label="Status" required="false"
+            tooltip="The status of the incident."/>
+        <parameter id="title" label="Title" required="true"
+            tooltip="The title of the incident."/>
+        <parameter id="description" label="Description" required="true"
+            tooltip="A short description of what the incident is about."/>
+        <parameter id="service" label="Affected Service" required="true"
+            tooltip="The Affected Service. List of possibilites found in HPSM instance."/>
+        <parameter id="assignment_group" label="Assignment Group" required="true"
+            tooltip="The Assignment Group. List of possibilites found in HPSM instance."/>
+        <parameter id="category" label="Category" required="true"
+            tooltip="The Category (default is 'incident')">incident</parameter>
+        <parameter id="area" label="Area" required="true"
+            tooltip="The area the incident is filed under. List of possibilites found in HPSM instance."/>
+        <parameter id="subarea" label="Subarea" required="true"
+            tooltip="The subarea the incident is filed under. List of possibilites found in HPSM instance."/>
+        <parameter id="impact" label="Impact" required="true"
+            tooltip="An integer corresponding to the impact level."/>
+        <parameter id="urgency" label="Urgency" required="true"
+            tooltip="An integer corresponding to the urgency level."/>
+    </parameters>
+    <handler name="hpsm_incident_create" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="server_address">&lt;%= @info['server_address'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="incident_id">&lt;%= @parameters['incident_id'] %&gt;</parameter>
+            <parameter name="status">&lt;%= @parameters['status'] %&gt;</parameter>
+            <parameter name="title">&lt;%= @parameters['title'] %&gt;</parameter>
+            <parameter name="description">&lt;%= @parameters['description'] %&gt;</parameter>
+            <parameter name="service">&lt;%= @parameters['service'] %&gt;</parameter>
+            <parameter name="assignment_group">&lt;%= @parameters['assignment_group'] %&gt;</parameter>
+            <parameter name="category">&lt;%= @parameters['category'] %&gt;</parameter>
+            <parameter name="area">&lt;%= @parameters['area'] %&gt;</parameter>
+            <parameter name="subarea">&lt;%= @parameters['subarea'] %&gt;</parameter>
+            <parameter name="impact">&lt;%= @parameters['impact'] %&gt;</parameter>
+            <parameter name="urgency">&lt;%= @parameters['urgency'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="incident_id"/>
+        <result name="messages"/>
+    </results>
+</taskDefinition>

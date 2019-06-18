@@ -1,0 +1,56 @@
+== Hpsm_Incident_Create
+This handler creates an Incident in HP Service Manager.
+
+=== Parameters
+[Incident Id]
+  The incident id (will be automatically assigned by HP SM if not inputted).
+[Status]
+  The status of the incident.
+[Title]
+  The title of the incident.
+[Description]
+  A short description of what the incident is about.
+[Affected Service]
+  The affected service. List of possibilities found in HPSM instance.
+[Assignment Group]
+  The assignment group. List of possibilities found is HPSM instance.
+[Category]
+  The category (default is 'incident').
+[Area]
+  The area. List of possibilities found in HPSM instance.
+[Subarea]
+  The subarea. List of possibilities found in HPSM instance.
+[Impact]
+  An integer corresponding to the impact level.
+[Urgency]
+  An integer corresponding to the urgency level.
+
+=== Results
+[Incident Id]
+  The Id of the newly created incident.
+[Messages]
+  Any messages that were returned by HPSM after the request was sent.
+
+==== Sample Configuration
+Incident Id:               IM10147
+Status:                    Open
+Title:                     Test Incident
+Description:               This is a test incident report
+Affected Service:          Applications
+Assignment Group:          Hardware
+Category:                  incident
+Area:                      hardware
+Subarea:                   hardware failure
+Impact:                    4
+Urgency:                   2
+
+
+=== Detailed Description
+This handler makes a SOAP call (using Savon) to the HP Service Manager Web 
+Services to create a new HPSM Incident. After Savon is configured with your
+HPSM server, a hash is made containing all of the information that was inputted
+to create an incident. That hash is then converted into an XML string and sent
+to HPSM to create the incident. Any messages that were caused by the request and
+the id of the new incident will be returned by the handler upon success. If
+there are any errors, the handler will raise an exception which will contain any
+messages that HPSM returned about the error.

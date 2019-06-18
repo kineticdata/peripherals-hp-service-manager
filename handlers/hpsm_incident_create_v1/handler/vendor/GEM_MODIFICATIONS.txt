@@ -1,0 +1,4 @@
+The following modifications were made to the vendor libraries in order to make
+them compatible with the Kinetic Task process:
+ * Added the VERSION constant to the Builder class in the 
+   lib\builder\xmlbase.rb file at line 6.

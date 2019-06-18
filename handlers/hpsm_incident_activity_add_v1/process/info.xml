@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taskInfo version="1.0">
+    <info name="username" description="The username of the HP Service Manager account."></info>
+    <info name="password" type="encrypted" description="The password of the HP Service Manager account."></info>
+    <info name="server_address" description="The address of your HP Service Manager server, including the port number."></info>
+    <info name="enable_debug_logging" description="Enable debug logging if the value is set to 'Yes'.">No</info>
+</taskInfo>

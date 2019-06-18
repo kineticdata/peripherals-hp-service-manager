@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="hpsm_incident_activity_add" name="HPSM Incident Activity Add" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Adds an activity update to an existing incident in HP Service Manager.</description>
+    <helpurl>http://ktc.kineticdata.com/handler/hpsm_incident_activity_add/1</helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="incident_id" label="Incident Id" required="true"
+            tooltip="The id of the incident you wish to update."/>
+        <parameter id="activity_update" label="Activity Update" required="true"
+            tooltip="The update you want to add to the incident."/>
+    </parameters>
+    <handler name="hpsm_incident_activity_add" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="password">&lt;%= @info['password'] %&gt;</info>
+            <info name="server_address">&lt;%= @info['server_address'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="incident_id">&lt;%= @parameters['incident_id'] %&gt;</parameter>
+            <parameter name="activity_update">&lt;%= @parameters['activity_update'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="incident_id"/>
+        <result name="messages"/>
+    </results>
+</taskDefinition>

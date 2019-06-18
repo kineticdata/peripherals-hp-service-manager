@@ -1,0 +1,29 @@
+== Hpsm_Incident_Activity_Add
+Adds an activity update to an existing incident in HP Service Manager.
+
+=== Parameters
+[Incident Id]
+  The id of the incident you wish to update.
+[Activity Update]
+  The update you want to add to the incident.
+
+=== Results
+[Incident Id]
+  The Id of the incident that was updated.
+[Messages]
+  Any messages that were returned by HPSM after the request was sent.
+
+==== Sample Configuration
+Incident Id:               IM10147
+Activity Update:           Computer only freezes on days that end with 'y'
+
+
+=== Detailed Description
+This handler makes a SOAP call (using Savon) to the HP Service Manager Web 
+Services to add an activity update to a new HPSM Incident. After Savon is 
+configured with your HPSM server, a hash is made containing the incident id and
+the activity update that you wish to send. That hash is then converted into an 
+XML string and sent to HPSM to update the incident. Any messages that were 
+caused by the request and the id of the updated incident will be returned by the 
+handler upon success. If there are any errors, the handler will raise an 
+exception which will contain any messages that HPSM returned about the error.

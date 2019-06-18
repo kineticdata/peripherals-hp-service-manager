@@ -1,0 +1,63 @@
+== Hpsm_Incident_Update
+This handler updates an Incident in HP Service Manager.
+
+=== Parameters
+[Incident Id]
+  The id for the incident you want to update.
+[Status]
+  The status of the incident.
+[Title]
+  The title of the incident.
+[Description]
+  A short description of what the incident is about.
+[Affected Service]
+  The affected service. List of possibilities found in HPSM instance.
+[Assignment Group]
+  The assignment group. List of possibilities found is HPSM instance.
+[Category]
+  The category (default is 'incident').
+[Area]
+  The area the incident is filed under. List of possibilities found in HPSM 
+  instance.
+[Subarea]
+  The subarea the incident is filed under. List of possibilities found in HPSM
+  instance. 
+[Impact]
+  An integer corresponding to the impact level.
+[Urgency]
+  An integer corresponding to the urgency level.
+[Activity Update]
+  The update you want to add to the incident.
+
+=== Results
+[Incident Id]
+  The Id of the incident that was updated.
+[Messages]
+  Any messages that were returned by HPSM after the update incident request was
+  sent.
+
+==== Sample Configuration
+Incident Id:               IM10147
+Status:                    
+Title:                     New Title
+Description:               
+Affected Service:          
+Assignment Group:          
+Category:                  
+Area:                      
+Subarea:                   
+Impact:                    
+Urgency:                   
+Activity Update:           Updated the title to make it easier to read
+
+
+
+=== Detailed Description
+This handler makes a SOAP call (using Savon) to the HP Service Manager Web 
+Services to update an existing HPSM Incident. After Savon is configured with 
+your HPSM server, a hash is made containing all of the information that was 
+inputted to update on the incident. That hash is then converted into an XML 
+string and sent to HPSM to update the incident. Any messages that were caused by 
+the request and the id of the incident that was updated will be returned by the 
+handler upon success. If there are any errors, the handler will raise an 
+exception which will contain any messages that HPSM returned about the error.
