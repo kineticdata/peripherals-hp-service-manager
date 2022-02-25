@@ -3,3 +3,4 @@ repo-name: peripherals-hp-service-manager
 categories:
 - Service Management
 display-name: HP Service Manager
+description: HPE Service Manager is a cloud-based help desk management solution that helps businesses handle change and incident management. It is also available for on-premise deployment.
